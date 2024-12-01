@@ -1,6 +1,7 @@
 {
   "name": "onchfs-proxy",
   "version": "1.0.0",
+  "type": "module",
   "private": "true",
   "main": "index.js",
   "scripts": {
@@ -10,8 +11,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@taquito/taquito": "^20.1.0",
     "express": "^4.21.1",
-    "onchfs": "^0.0.0",
+    "hpack.js": "^2.1.6",
+    "js-sha3": "^0.9.3",
+    "pako": "^2.1.0",
     "tiny-env-config": "^1.0.0"
   }
 }

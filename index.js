@@ -1,5 +1,5 @@
-const onchfs = require("onchfs").default
-const express = require("express")
+import onchfs from "./onchfs.js"
+import express from "express"
 
 const app = express()
 
@@ -14,9 +14,7 @@ const resolver = onchfs.resolver.create([
 
 app.use(async (req, res, next) => {
   // resolve a URI
-  console.log(req.path)
   const response = await resolver(req.path)
-  console.log(response)
   // response can be used as is for http
   return res
     .header(response.headers)

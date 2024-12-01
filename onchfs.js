@@ -36,10 +36,9 @@ __export(utils_exports, {
 });
 
 // src/utils/keccak.ts
-import jssha3 from "js-sha3";
-const { keccak256 } = jssha3; 
+import sha3 from "js-sha3";
 function keccak(bytes) {
-  return new Uint8Array(keccak256.digest(bytes));
+  return new Uint8Array(sha3.keccak256.digest(bytes));
 }
 
 // src/utils/string.ts
@@ -664,20 +663,13 @@ function createProxyResolver(controllers) {
             }
             return {
               getInodeAtPath: async (cid, path) => {
-                console.log(cid, path)
                 const kt = await KT(address);
-                try {
                 const out = await kt.contractViews.get_inode_at({
                   cid,
                   path
                 }).executeView({
                   viewCaller: "KT1Uktxf9dgGga6DRRNbGEDepxFGTwNtTg4y"
                 });
-                } catch(e) {
-                  console.error(e)
-                  throw e
-                }
-                console.log(out)
                 if (out.inode.directory) {
                   const files = {};
                   for (const [name, pointer] of out.inode.directory.entries()) {
@@ -696,7 +688,6 @@ function createProxyResolver(controllers) {
                 }
               },
               readFile: async (cid) => {
-                console.log(cid)
                 const kt = await KT(address);
                 const res = await kt.contractViews.read_file(cid).executeView({
                   viewCaller: "KT1Uktxf9dgGga6DRRNbGEDepxFGTwNtTg4y"
