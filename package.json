@@ -1,7 +1,6 @@
 {
   "name": "onchfs-proxy",
   "version": "1.0.0",
-  "type": "module",
   "private": "true",
   "main": "index.js",
   "scripts": {
@@ -9,5 +8,10 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1",
+    "onchfs": "^0.0.0",
+    "tiny-env-config": "^1.0.0"
+  }
 }
