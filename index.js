@@ -1,21 +1,21 @@
 import onchfs from "./onchfs.js"
 import express from "express"
+import {
+  RPCS,
+  BLOCKCHAIN
+} from './config.js'
 
 const app = express()
 
-// setup resolver
 const resolver = onchfs.resolver.create([
   {
-    blockchain: "tezos:ghostnet",
-    rpcs: ["https://ghostnet.smartpy.io" /* ... */],
+    blockchain: BLOCKCHAIN, 
+    rpcs: RPCS 
   },
-  // ... more if desired
 ])
 
 app.use(async (req, res, next) => {
-  // resolve a URI
   const response = await resolver(req.path)
-  // response can be used as is for http
   return res
     .header(response.headers)
     .status(response.status)
