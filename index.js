@@ -15,6 +15,7 @@ const resolver = onchfs.resolver.create([
 ])
 
 app.use(async (req, res, next) => {
+  console.log(req.path)
   const response = await resolver(req.path)
   return res
     .header(response.headers)
