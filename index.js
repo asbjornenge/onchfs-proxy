@@ -22,6 +22,12 @@ app.use(async (req, res, next) => {
   let rhash = ''
   let domain = ''
   let resolved = false
+  if (req.path === '/') {
+    return res
+      .header({ Location: '/@onchfs.io/'})
+      .status(307)i
+      .send('REDIRECT')
+  }
   if (req.path.indexOf('/@') === 0) {
     try {
       domain = req.path.slice(2).split('/')[0]
